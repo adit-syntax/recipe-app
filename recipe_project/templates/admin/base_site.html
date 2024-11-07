@@ -1,0 +1,39 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrastyle %}
+<style>
+    #header {
+        background: #2c3e50;
+        color: #fff;
+    }
+    
+    #user-tools a {
+        color: #fff;
+    }
+    
+    .module h2, .module caption, .inline-group h2 {
+        background: #34495e;
+    }
+    
+    div.breadcrumbs {
+        background: #34495e;
+    }
+    
+    .submit-row input {
+        background: #2c3e50;
+    }
+    
+    .submit-row input:hover {
+        background: #34495e;
+    }
+    
+    .button, input[type=submit], input[type=button], .submit-row input, a.button {
+        background: #2c3e50;
+    }
+    
+    .button:hover, input[type=submit]:hover, input[type=button]:hover {
+        background: #34495e;
+    }
+</style>
+{% endblock %}

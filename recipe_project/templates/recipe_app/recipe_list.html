@@ -1,0 +1,39 @@
+{% extends 'recipe_app/base.html' %}
+{% block content %}
+    <main>
+        <h1>RecipeVerse</h1>
+        <nav>
+            <a href="{% url 'recipe_create' %}">Add Recipe</a>
+        </nav>
+        <div class="recipe-grid">
+            {% for recipe in recipes %}
+                <div class="recipe-card">
+                    <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
+                    <div class="recipe-card-content">
+                        <h3>{{ recipe.title }}</h3>
+                        <div class="card-section">
+                            <h4>Ingredients:</h4>
+                            <ul class="ingredients-preview">
+                                {% for ingredient in recipe.ingredients.splitlines|slice:":3" %}
+                                    {% if ingredient %}
+                                        <li>{{ ingredient }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if recipe.ingredients.splitlines|length > 3 %}
+                                    <li class="more-ingredients">...</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <div class="card-section">
+                            <h4>Instructions:</h4>
+                            <p class="description-preview">
+                                {{ recipe.description|truncatechars:100 }}
+                            </p>
+                        </div>
+                        <a href="{% url 'recipe_detail' recipe.id %}" class="view-button">View Recipe</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}

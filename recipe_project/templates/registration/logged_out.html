@@ -1,0 +1,16 @@
+{% extends 'recipe_app/base.html' %}
+
+{% block content %}
+<div class="auth-container">
+    <h2>Logged Out</h2>
+    <p>You have been successfully logged out.</p>
+    <p><a href="{% url 'login' %}">Click here to login again</a></p>
+</div>
+<script>
+    // Clear browser cache and prevent going back
+    window.history.forward();
+    function noBack() {
+        window.history.forward();
+    }
+</script>
+{% endblock %}

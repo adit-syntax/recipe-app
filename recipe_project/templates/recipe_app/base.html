@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecipeVerse</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+</head>
+<body {% if not user.is_authenticated %}onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload=""{% endif %}>
+    <header>
+        <h1>RecipeVerse</h1>
+        <nav>
+            {% if user.is_authenticated %}
+                <span>Welcome, {{ user.username }}</span>
+                <a href="{% url 'recipe_list' %}">My Recipes</a>
+                <a href="{% url 'recipe_create' %}">Add Recipe</a>
+                <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'signup' %}">Register</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    {% if not user.is_authenticated %}
+    <script>
+        function noBack() {
+            window.history.forward();
+        }
+    </script>
+    {% endif %}
+</body>
+</html>
