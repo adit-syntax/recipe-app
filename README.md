@@ -92,6 +92,5 @@ recipe_project/
 ├── templates/            # HTML templates
 │   ├── recipe_app/
 │   └── registration/
-├── manage.py
-└── requirements.txt
+└── manage.py
 ```
