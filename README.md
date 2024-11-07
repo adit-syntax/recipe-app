@@ -40,7 +40,6 @@ RecipeVerse is a web application built with Django that allows users to create, 
 1. Clone the repository
 ```bash
 git clone https://github.com/adit-syntax/recipe-app
-cd testing
 ```
 
 2. Create a virtual environment and activate it
